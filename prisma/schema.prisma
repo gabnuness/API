@@ -1,0 +1,18 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Seu modelo de usuário para o Mongo precisa do @id e @map("_id")
+model User {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  email String @unique
+  name  String
+  age   String
+  
+
+}
